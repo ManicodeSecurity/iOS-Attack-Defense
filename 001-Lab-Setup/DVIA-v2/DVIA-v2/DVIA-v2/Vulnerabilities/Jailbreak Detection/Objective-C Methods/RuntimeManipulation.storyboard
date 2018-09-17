@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8It-mx-aOm">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Roman</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Runtime Manipulation-->
+        <scene sceneID="3Ey-5y-UbM">
+            <objects>
+                <viewController id="Bbu-sl-jPk" customClass="RuntimeManipulationViewController" customModule="DVIA_v2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bsw-Is-WCr"/>
+                        <viewControllerLayoutGuide type="bottom" id="u9v-hR-aGY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fqH-Ra-bUh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="25D-Dj-mSb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="48o-Ln-i1G"/>
+                                    <constraint firstAttribute="height" constant="200" id="qM9-gv-Js0"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">All native iOS applications are written in Objective-C which is a runtime oriented language. This feature makes all native applications vulnerable to runtime analysis and manipulation. Your task is to bypass the login check in the followig challenges using runtime manipulation techniques .</string>
+                                        <attributes>
+                                            <font key="NSFont" size="19" name="Avenir-Roman"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLV-QC-5qU">
+                                <rect key="frame" x="115" y="222" width="144" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="START CHALLENGE">
+                                    <color key="titleColor" red="0.87450980389999999" green="0.72941176470000002" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="p4L-bl-0f0" kind="show" id="dOE-7x-xh2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="25D-Dj-mSb" firstAttribute="top" secondItem="bsw-Is-WCr" secondAttribute="bottom" id="2qM-cp-zZU"/>
+                            <constraint firstItem="25D-Dj-mSb" firstAttribute="top" secondItem="bsw-Is-WCr" secondAttribute="bottom" id="CSt-tm-KZH"/>
+                            <constraint firstItem="25D-Dj-mSb" firstAttribute="leading" secondItem="fqH-Ra-bUh" secondAttribute="leading" id="Nxe-Qw-ekd"/>
+                            <constraint firstItem="YLV-QC-5qU" firstAttribute="top" secondItem="25D-Dj-mSb" secondAttribute="bottom" constant="22" id="ROO-SU-XzC"/>
+                            <constraint firstItem="25D-Dj-mSb" firstAttribute="top" secondItem="bsw-Is-WCr" secondAttribute="bottom" id="SWp-Ee-E0R"/>
+                            <constraint firstAttribute="trailing" secondItem="25D-Dj-mSb" secondAttribute="trailing" id="ec0-Ck-hHG"/>
+                            <constraint firstItem="YLV-QC-5qU" firstAttribute="centerX" secondItem="fqH-Ra-bUh" secondAttribute="centerX" id="kQM-wM-kyk"/>
+                            <constraint firstItem="25D-Dj-mSb" firstAttribute="leading" secondItem="fqH-Ra-bUh" secondAttribute="leading" id="keC-mj-pz9"/>
+                            <constraint firstAttribute="trailing" secondItem="25D-Dj-mSb" secondAttribute="trailing" id="xtp-hM-duV"/>
+                            <constraint firstItem="25D-Dj-mSb" firstAttribute="top" secondItem="bsw-Is-WCr" secondAttribute="bottom" id="xwh-0k-ntW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Runtime Manipulation" id="iJW-S7-rRg">
+                        <barButtonItem key="leftBarButtonItem" title="MENU" id="5Wj-sA-qeM">
+                            <connections>
+                                <action selector="menuTapped:" destination="Bbu-sl-jPk" id="0EW-Rd-Ets"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XtU-dm-oUv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1022" y="2114"/>
+        </scene>
+        <!--Runtime Manipulation Details View Controller-->
+        <scene sceneID="KS8-GU-Xho">
+            <objects>
+                <viewController id="p4L-bl-0f0" customClass="RuntimeManipulationDetailsViewController" customModule="DVIA_v2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dus-ns-gjZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="50B-i0-tWx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8zE-e8-2En">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJ7-F6-0PJ">
+                                <rect key="frame" x="16" y="20" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udU-hx-jbU">
+                                <rect key="frame" x="16" y="60" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USS-5n-YaP">
+                                <rect key="frame" x="134" y="120" width="107" height="30"/>
+                                <state key="normal" title="Login Method 2">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginMethod2Tapped:" destination="p4L-bl-0f0" eventType="touchUpInside" id="Gdw-Fi-Hx5"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbX-zn-iu7">
+                                <rect key="frame" x="0.0" y="150" width="375" height="100"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="fvd-O5-pI8"/>
+                                </constraints>
+                                <string key="text">Tapping the button below will load a tutorial on runtime manipulation from a particular url. Use runtime manipulation techniques to load content from a different url instead, for e.g http://google.com.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Brute Force this 4 digit code using Cycript" translatesAutoresizingMaskIntoConstraints="NO" id="dOX-Fi-Q03">
+                                <rect key="frame" x="0.0" y="284" width="375" height="35"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="JcW-xv-i03"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CzX-0F-ZW3">
+                                <rect key="frame" x="144" y="250" width="87" height="30"/>
+                                <state key="normal" title="Read tutorial">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="readTutorialTapped:" destination="p4L-bl-0f0" eventType="touchUpInside" id="bxs-o7-MAl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWh-10-k0K">
+                                <rect key="frame" x="141" y="365" width="93" height="30"/>
+                                <state key="normal" title="Validate code">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="validateCodeTapped:" destination="p4L-bl-0f0" eventType="touchUpInside" id="EeX-Jz-KLt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cu-LZ-ips">
+                                <rect key="frame" x="135" y="90" width="105" height="30"/>
+                                <state key="normal" title="Login Method 1">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginMethod1Tapped:" destination="p4L-bl-0f0" eventType="touchUpInside" id="CPh-Ya-c6A"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter correct 4 digit numeric code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rrP-UF-Fbo">
+                                <rect key="frame" x="16" y="327" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3cu-LZ-ips" firstAttribute="centerX" secondItem="8zE-e8-2En" secondAttribute="centerX" id="1mn-LS-6XS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SJ7-F6-0PJ" secondAttribute="trailing" id="4At-k5-Xfi"/>
+                            <constraint firstItem="bWh-10-k0K" firstAttribute="centerX" secondItem="8zE-e8-2En" secondAttribute="centerX" id="4ha-Ue-ngw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="udU-hx-jbU" secondAttribute="trailing" id="A5n-Li-qF3"/>
+                            <constraint firstItem="3cu-LZ-ips" firstAttribute="top" secondItem="udU-hx-jbU" secondAttribute="bottom" id="AG0-Uh-xSa"/>
+                            <constraint firstItem="mbX-zn-iu7" firstAttribute="top" secondItem="USS-5n-YaP" secondAttribute="bottom" id="B45-9f-wzJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rrP-UF-Fbo" secondAttribute="trailing" id="G6K-M5-QqD"/>
+                            <constraint firstAttribute="trailing" secondItem="dOX-Fi-Q03" secondAttribute="trailing" id="GuA-Oe-oZn"/>
+                            <constraint firstItem="mbX-zn-iu7" firstAttribute="leading" secondItem="8zE-e8-2En" secondAttribute="leading" id="LWA-rT-MHi"/>
+                            <constraint firstItem="udU-hx-jbU" firstAttribute="top" secondItem="SJ7-F6-0PJ" secondAttribute="bottom" constant="10" id="Os4-5R-wbr"/>
+                            <constraint firstItem="SJ7-F6-0PJ" firstAttribute="top" secondItem="dus-ns-gjZ" secondAttribute="bottom" constant="20" id="Pfb-td-Z9K"/>
+                            <constraint firstItem="CzX-0F-ZW3" firstAttribute="top" secondItem="mbX-zn-iu7" secondAttribute="bottom" id="QIr-Dn-EPc"/>
+                            <constraint firstItem="dOX-Fi-Q03" firstAttribute="top" secondItem="CzX-0F-ZW3" secondAttribute="bottom" constant="4" id="Qbc-no-F0y"/>
+                            <constraint firstItem="SJ7-F6-0PJ" firstAttribute="leading" secondItem="8zE-e8-2En" secondAttribute="leadingMargin" id="Yvt-Ry-hwf"/>
+                            <constraint firstItem="rrP-UF-Fbo" firstAttribute="leading" secondItem="8zE-e8-2En" secondAttribute="leadingMargin" id="Z2u-kk-5C3"/>
+                            <constraint firstAttribute="trailing" secondItem="mbX-zn-iu7" secondAttribute="trailing" id="ehR-YF-GXi"/>
+                            <constraint firstItem="rrP-UF-Fbo" firstAttribute="top" secondItem="dOX-Fi-Q03" secondAttribute="bottom" constant="8" id="lF8-bG-POD"/>
+                            <constraint firstItem="USS-5n-YaP" firstAttribute="top" secondItem="3cu-LZ-ips" secondAttribute="bottom" id="lbr-DH-ERF"/>
+                            <constraint firstItem="CzX-0F-ZW3" firstAttribute="centerX" secondItem="8zE-e8-2En" secondAttribute="centerX" id="mUb-nH-xdS"/>
+                            <constraint firstItem="bWh-10-k0K" firstAttribute="top" secondItem="rrP-UF-Fbo" secondAttribute="bottom" constant="8" id="nlV-dD-3y6"/>
+                            <constraint firstItem="USS-5n-YaP" firstAttribute="centerX" secondItem="8zE-e8-2En" secondAttribute="centerX" id="pYw-uw-1oI"/>
+                            <constraint firstItem="dOX-Fi-Q03" firstAttribute="leading" secondItem="8zE-e8-2En" secondAttribute="leading" id="qBc-yv-iNI"/>
+                            <constraint firstItem="udU-hx-jbU" firstAttribute="leading" secondItem="8zE-e8-2En" secondAttribute="leadingMargin" id="s20-Mi-KVZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="codeTextField" destination="rrP-UF-Fbo" id="n7T-O5-j95"/>
+                        <outlet property="passwordTextField" destination="udU-hx-jbU" id="I6P-gI-2vZ"/>
+                        <outlet property="usernameTextField" destination="SJ7-F6-0PJ" id="Qa0-8X-dn3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezT-tz-OLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-254" y="2113"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="diR-Yz-6rz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8It-mx-aOm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="hqW-jn-j3i">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bbu-sl-jPk" kind="relationship" relationship="rootViewController" id="av8-5d-Jyk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhh-eR-PVn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1713" y="2113"/>
+        </scene>
+    </scenes>
+</document>

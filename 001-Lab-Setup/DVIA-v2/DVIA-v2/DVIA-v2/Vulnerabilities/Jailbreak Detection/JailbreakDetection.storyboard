@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="38e-om-Qpf">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Roman</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Jailbreak Detection-->
+        <scene sceneID="OE1-Vi-Q4f">
+            <objects>
+                <viewController id="k5q-rq-F5Y" customClass="JailbreakDetectionViewController" customModule="DVIA_v2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vba-Qx-XXf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ryz-vL-cy8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5tT-aw-CGo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCG-aG-JPf">
+                                <rect key="frame" x="145" y="264" width="124" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Jailbreak Test 1">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="jailbreakTest1Tapped:" destination="k5q-rq-F5Y" eventType="touchUpInside" id="U1A-wB-yp7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5B-pm-yBq">
+                                <rect key="frame" x="0.0" y="294" width="414" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Jailbreak Test 2">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="jailbreakTest2Tapped:" destination="k5q-rq-F5Y" eventType="touchUpInside" id="x07-LJ-c2J"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsy-WI-bDW">
+                                <rect key="frame" x="144" y="325" width="127" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Jailbreak Test 3">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="jailbreakTest3Tapped:" destination="k5q-rq-F5Y" eventType="touchUpInside" id="kqz-zL-SmA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMq-uU-dCw">
+                                <rect key="frame" x="144" y="354" width="127" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Jailbreak Test 4">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="jailbreakTest4Tapped:" destination="k5q-rq-F5Y" eventType="touchUpInside" id="YLI-CS-OuC"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sA9-8z-CY4">
+                                <rect key="frame" x="0.0" y="64" width="414" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="EUT-Dc-Po0"/>
+                                </constraints>
+                                <string key="text">Some developers do a check for a jailbroken device and allow the application to function only if it isn't. Your task is to run this application on a jailbroken device and fool the application into thinking it is not jailbroken.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Gq-NC-LcD">
+                                <rect key="frame" x="144" y="385" width="127" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Jailbreak Test 5">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="jailbreakTest5Tapped:" destination="k5q-rq-F5Y" eventType="touchUpInside" id="xvX-6u-i6C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="g5B-pm-yBq" firstAttribute="top" secondItem="dCG-aG-JPf" secondAttribute="bottom" constant="-4" id="1Vf-HM-chd"/>
+                            <constraint firstItem="uMq-uU-dCw" firstAttribute="centerX" secondItem="5tT-aw-CGo" secondAttribute="centerX" id="3GV-Gs-ihz"/>
+                            <constraint firstItem="sA9-8z-CY4" firstAttribute="top" secondItem="vba-Qx-XXf" secondAttribute="bottom" id="4h6-01-u5Q"/>
+                            <constraint firstItem="uMq-uU-dCw" firstAttribute="top" secondItem="lsy-WI-bDW" secondAttribute="bottom" constant="-5" id="9xk-wf-if3"/>
+                            <constraint firstItem="g5B-pm-yBq" firstAttribute="leading" secondItem="5tT-aw-CGo" secondAttribute="leading" id="Ulp-hN-iMl"/>
+                            <constraint firstItem="9Gq-NC-LcD" firstAttribute="top" secondItem="uMq-uU-dCw" secondAttribute="bottom" constant="-3" id="V3s-MA-SY9"/>
+                            <constraint firstItem="9Gq-NC-LcD" firstAttribute="centerX" secondItem="5tT-aw-CGo" secondAttribute="centerX" id="cYX-3F-in8"/>
+                            <constraint firstAttribute="trailing" secondItem="sA9-8z-CY4" secondAttribute="trailing" id="fOi-NJ-rQ2"/>
+                            <constraint firstItem="lsy-WI-bDW" firstAttribute="top" secondItem="g5B-pm-yBq" secondAttribute="bottom" constant="-3" id="hbW-zG-m8k"/>
+                            <constraint firstAttribute="trailing" secondItem="g5B-pm-yBq" secondAttribute="trailing" id="ovn-E7-raB"/>
+                            <constraint firstItem="dCG-aG-JPf" firstAttribute="top" secondItem="sA9-8z-CY4" secondAttribute="bottom" id="pfb-2U-gUU"/>
+                            <constraint firstItem="dCG-aG-JPf" firstAttribute="centerX" secondItem="5tT-aw-CGo" secondAttribute="centerX" id="qw8-Aq-IAr"/>
+                            <constraint firstItem="sA9-8z-CY4" firstAttribute="leading" secondItem="5tT-aw-CGo" secondAttribute="leading" id="tA1-UD-O5m"/>
+                            <constraint firstItem="lsy-WI-bDW" firstAttribute="centerX" secondItem="5tT-aw-CGo" secondAttribute="centerX" id="zYY-Ij-Yj9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Jailbreak Detection" id="OHy-t1-ivt">
+                        <barButtonItem key="leftBarButtonItem" title="MENU" id="AD8-d3-udE">
+                            <connections>
+                                <action selector="handleMenuTap:" destination="k5q-rq-F5Y" id="hwb-RL-RTL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZS-7i-7fe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816.79999999999995" y="-694.00299850074964"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="esc-C6-KPk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="38e-om-Qpf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Veh-y5-7Rc">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="k5q-rq-F5Y" kind="relationship" relationship="rootViewController" id="dcr-nT-E31"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FVw-c1-pVn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48" y="-660.2698650674663"/>
+        </scene>
+    </scenes>
+</document>

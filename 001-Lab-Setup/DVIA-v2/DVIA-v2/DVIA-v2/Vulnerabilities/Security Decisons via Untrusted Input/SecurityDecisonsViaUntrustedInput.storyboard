@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bgI-cs-tS5">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+            <string>Avenir-Roman</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--IPC Issues-->
+        <scene sceneID="iYm-Cb-PKv">
+            <objects>
+                <viewController id="fXG-le-hwg" customClass="SecurityDecisonsViaUntrustedInputViewController" customModule="DVIA_v2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gaS-AA-wuc"/>
+                        <viewControllerLayoutGuide type="bottom" id="xXx-yl-Qh4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tNl-aO-Lcc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zq2-Pz-jlT">
+                                <rect key="frame" x="11" y="64" width="353" height="93"/>
+                                <string key="text">In iOS apps can communicate between each other using certain IPC Apis. If an incoming request from another app is not handled properly, it can lead to a security vulnerability.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bst-dy-CUU">
+                                <rect key="frame" x="115" y="182" width="144" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="START CHALLENGE">
+                                    <color key="titleColor" red="0.87450980389999999" green="0.72941176470000002" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0aZ-MG-Mhg" kind="show" id="XQd-LJ-gQh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zq2-Pz-jlT" firstAttribute="top" secondItem="gaS-AA-wuc" secondAttribute="bottom" id="0vn-PM-2oQ"/>
+                            <constraint firstAttribute="trailing" secondItem="zq2-Pz-jlT" secondAttribute="trailing" constant="11" id="Evd-li-FAr"/>
+                            <constraint firstItem="Bst-dy-CUU" firstAttribute="centerX" secondItem="tNl-aO-Lcc" secondAttribute="centerX" id="HiF-sk-Z53"/>
+                            <constraint firstItem="zq2-Pz-jlT" firstAttribute="leading" secondItem="tNl-aO-Lcc" secondAttribute="leading" constant="11" id="OYD-ck-XDA"/>
+                            <constraint firstItem="Bst-dy-CUU" firstAttribute="top" secondItem="zq2-Pz-jlT" secondAttribute="bottom" constant="25" id="zdY-c5-5B7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="IPC Issues" id="1Zr-SN-GCO">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="XZI-YK-lq6">
+                            <connections>
+                                <action selector="menuTapped:" destination="fXG-le-hwg" id="QRa-br-P95"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hIs-9C-fjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="706" y="294"/>
+        </scene>
+        <!--Security Decisions View Untrusted Input Detail View Controller-->
+        <scene sceneID="iP2-jf-HbA">
+            <objects>
+                <viewController id="0aZ-MG-Mhg" customClass="SecurityDecisionsViewUntrustedInputDetailViewController" customModule="DVIA_v2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kCP-4S-3on"/>
+                        <viewControllerLayoutGuide type="bottom" id="QYk-g9-ZOd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dzi-aC-diF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2tf-4R-Egt">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncz-17-1vV">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="700"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VDj-uE-f4b">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="350"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="350" id="Q0X-Y4-FUr"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="v9G-FH-BBH"/>
+                                                </constraints>
+                                                <string key="text">Let's assume this is an application like Skype that can call any number. This application also allows other applications to interact with it using URL schemes. However, there is no validation or prompt shown to the user before actually making the call. So any malicious application can call a number using this vulnerability without the validation of the user. Your task is to call a random number without using this application through IPC (url schemes).</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="VDj-uE-f4b" firstAttribute="leading" secondItem="ncz-17-1vV" secondAttribute="leading" id="1by-QQ-c1a"/>
+                                            <constraint firstAttribute="trailing" secondItem="VDj-uE-f4b" secondAttribute="trailing" id="HdQ-uX-BJ9"/>
+                                            <constraint firstItem="VDj-uE-f4b" firstAttribute="top" secondItem="ncz-17-1vV" secondAttribute="top" id="boE-La-XIa"/>
+                                            <constraint firstAttribute="height" constant="1000" id="qWL-9n-knr"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThP-ke-mln">
+                                        <rect key="frame" x="156.5" y="454" width="30" height="30"/>
+                                        <state key="normal" title="Call"/>
+                                        <connections>
+                                            <action selector="callButtonTapped:" destination="0aZ-MG-Mhg" eventType="touchUpInside" id="klM-gl-sKF"/>
+                                        </connections>
+                                    </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seriously?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXe-FU-kcS">
+                                        <rect key="frame" x="132" y="492" width="79" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a number to call" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFj-yU-NXs">
+                                        <rect key="frame" x="90" y="416" width="162.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="KXe-FU-kcS" firstAttribute="centerX" secondItem="ncz-17-1vV" secondAttribute="centerX" id="1A6-lg-kJI"/>
+                                    <constraint firstItem="ncz-17-1vV" firstAttribute="top" secondItem="2tf-4R-Egt" secondAttribute="top" id="5SG-gL-zar"/>
+                                    <constraint firstItem="ThP-ke-mln" firstAttribute="centerX" secondItem="ncz-17-1vV" secondAttribute="centerX" id="TD0-wL-bic"/>
+                                    <constraint firstItem="fFj-yU-NXs" firstAttribute="top" secondItem="VDj-uE-f4b" secondAttribute="bottom" constant="66" id="TyT-zw-smv"/>
+                                    <constraint firstAttribute="bottom" secondItem="ncz-17-1vV" secondAttribute="bottom" id="Xop-5q-K8w"/>
+                                    <constraint firstItem="KXe-FU-kcS" firstAttribute="top" secondItem="ThP-ke-mln" secondAttribute="bottom" constant="8" id="Ynh-0l-ygX"/>
+                                    <constraint firstItem="fFj-yU-NXs" firstAttribute="centerX" secondItem="ncz-17-1vV" secondAttribute="centerX" id="ech-jh-eGx"/>
+                                    <constraint firstItem="ncz-17-1vV" firstAttribute="leading" secondItem="2tf-4R-Egt" secondAttribute="leading" id="j1K-pd-iDh"/>
+                                    <constraint firstAttribute="trailing" secondItem="ncz-17-1vV" secondAttribute="trailing" id="kkf-Vo-qU1"/>
+                                    <constraint firstItem="ThP-ke-mln" firstAttribute="top" secondItem="fFj-yU-NXs" secondAttribute="bottom" constant="8" id="tdw-VO-eUB"/>
+                                    <constraint firstItem="ncz-17-1vV" firstAttribute="width" secondItem="2tf-4R-Egt" secondAttribute="width" id="xzq-GZ-Wjx"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="2tf-4R-Egt" secondAttribute="trailing" id="cUe-b6-Zdf"/>
+                            <constraint firstItem="QYk-g9-ZOd" firstAttribute="top" secondItem="2tf-4R-Egt" secondAttribute="bottom" id="cj8-d3-GQ7"/>
+                            <constraint firstItem="2tf-4R-Egt" firstAttribute="top" secondItem="kCP-4S-3on" secondAttribute="bottom" id="eyL-EV-PZG"/>
+                            <constraint firstItem="2tf-4R-Egt" firstAttribute="leading" secondItem="Dzi-aC-diF" secondAttribute="leadingMargin" id="fA0-Fk-9GV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="callStatusLabel" destination="KXe-FU-kcS" id="lNE-DC-hhP"/>
+                        <outlet property="enterNumberTextField" destination="fFj-yU-NXs" id="cmr-wZ-Pbb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SxM-qd-W9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1429.5999999999999" y="293.25337331334333"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9wD-0S-cO7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bgI-cs-tS5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Map-yr-QQG">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fXG-le-hwg" kind="relationship" relationship="rootViewController" id="dPI-2I-MNQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Evr-ym-fpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18" y="294"/>
+        </scene>
+    </scenes>
+</document>

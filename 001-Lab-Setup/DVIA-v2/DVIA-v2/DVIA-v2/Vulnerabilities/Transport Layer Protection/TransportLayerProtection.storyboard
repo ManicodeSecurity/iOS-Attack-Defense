@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="b91-A9-42w">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Network Layer Security-->
+        <scene sceneID="Ck0-39-0dH">
+            <objects>
+                <viewController id="RbF-hp-Dde" customClass="TransportLayerProtectionViewController" customModule="DVIA_v2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fV0-i8-qoe"/>
+                        <viewControllerLayoutGuide type="bottom" id="0W9-ft-ywt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BnA-6G-QMX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bcc-If-QWU">
+                                <rect key="frame" x="0.0" y="64" width="375" height="1136"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9IV-2e-JxI">
+                                        <rect key="frame" x="8" y="0.0" width="375" height="1200"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHe-eG-Owi">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="QPQ-9w-Vfu"/>
+                                                </constraints>
+                                                <string key="text">There are three ways to send data over the network, use HTTP, use HTTPs, or use SSL/Cert pinning to check a hardcoded certificate against the certificate provided by the server to prevent MITM attacks. Your task is to intercept the information being sent over the network when the "Send" button is tapped in all the three cases.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a fake Card Number" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="AIh-Xu-u4Z">
+                                                <rect key="frame" x="20" y="241" width="231.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="cc-number"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a fake Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgm-TS-INM">
+                                                <rect key="frame" x="20" y="199" width="335" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8aj-FJ-ybF">
+                                                <rect key="frame" x="121" y="288" width="132" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="SEND OVER HTTP">
+                                                    <color key="titleColor" red="0.87450980389999999" green="0.72941176470000002" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sendOverHTTPTapped:" destination="RbF-hp-Dde" eventType="touchUpInside" id="J29-Kd-8Nm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruz-HZ-aRV">
+                                                <rect key="frame" x="117" y="313" width="141" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="SEND OVER HTTPS">
+                                                    <color key="titleColor" red="0.87450980389999999" green="0.72941176470000002" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sendOverHTTPSTapped:" destination="RbF-hp-Dde" eventType="touchUpInside" id="FPo-se-kMX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="au8-Ai-FA9">
+                                                <rect key="frame" x="59" y="368" width="257" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="SEND USING PUBLIC KEY PINNING">
+                                                    <color key="titleColor" red="0.87450980389999999" green="0.72941176470000002" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sendUsingPublicKeyPinning:" destination="RbF-hp-Dde" eventType="touchUpInside" id="38z-Wk-4CN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbx-bI-mKV">
+                                                <rect key="frame" x="46" y="391" width="284" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="APP TRANSPORT SECURITY">
+                                                    <color key="titleColor" red="0.87450980389999999" green="0.72941176470000002" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="checkATS:" destination="RbF-hp-Dde" eventType="touchUpInside" id="BHB-kD-Nu3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7M-CJ-8Re">
+                                                <rect key="frame" x="55" y="341" width="263" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="SEND USING CERTIFICATE PINNING">
+                                                    <color key="titleColor" red="0.87450980389999999" green="0.72941176470000002" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sendUsingSSLPinning:" destination="RbF-hp-Dde" eventType="touchUpInside" id="CfQ-mW-k1M"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fake CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eis-Ab-XWf">
+                                                <rect key="frame" x="271.5" y="241" width="83.5" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="83.5" id="8zz-cF-AW3"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="eis-Ab-XWf" firstAttribute="leading" secondItem="AIh-Xu-u4Z" secondAttribute="trailing" constant="20" id="EON-18-bVz"/>
+                                            <constraint firstItem="AIh-Xu-u4Z" firstAttribute="leading" secondItem="9IV-2e-JxI" secondAttribute="leading" constant="20" id="GCZ-zq-tt6"/>
+                                            <constraint firstItem="AIh-Xu-u4Z" firstAttribute="top" secondItem="rgm-TS-INM" secondAttribute="bottom" constant="12" id="LmQ-Re-UHT"/>
+                                            <constraint firstItem="eis-Ab-XWf" firstAttribute="top" secondItem="rgm-TS-INM" secondAttribute="bottom" constant="12" id="MF7-oE-GW6"/>
+                                            <constraint firstAttribute="trailing" secondItem="pHe-eG-Owi" secondAttribute="trailing" id="PeX-lG-O1r"/>
+                                            <constraint firstAttribute="trailing" secondItem="rgm-TS-INM" secondAttribute="trailing" constant="20" id="Rta-KU-aR3"/>
+                                            <constraint firstItem="pHe-eG-Owi" firstAttribute="top" secondItem="9IV-2e-JxI" secondAttribute="top" id="a9u-9s-VaP"/>
+                                            <constraint firstAttribute="height" constant="1200" id="iaT-3x-36e"/>
+                                            <constraint firstItem="pHe-eG-Owi" firstAttribute="leading" secondItem="9IV-2e-JxI" secondAttribute="leading" id="lgj-6G-Hi5"/>
+                                            <constraint firstItem="rgm-TS-INM" firstAttribute="top" secondItem="pHe-eG-Owi" secondAttribute="bottom" constant="-1" id="pNq-Be-4nZ"/>
+                                            <constraint firstItem="rgm-TS-INM" firstAttribute="leading" secondItem="9IV-2e-JxI" secondAttribute="leading" constant="20" id="qM6-9h-3gF"/>
+                                            <constraint firstAttribute="trailing" secondItem="eis-Ab-XWf" secondAttribute="trailing" constant="20" id="xcd-0s-gKz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9IV-2e-JxI" firstAttribute="top" secondItem="Bcc-If-QWU" secondAttribute="topMargin" id="2ES-FM-sdA"/>
+                                    <constraint firstItem="9IV-2e-JxI" firstAttribute="leading" secondItem="Bcc-If-QWU" secondAttribute="leadingMargin" id="P5w-1J-oeF"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="9IV-2e-JxI" secondAttribute="bottom" id="VSk-bc-4oT"/>
+                                    <constraint firstItem="9IV-2e-JxI" firstAttribute="top" secondItem="Bcc-If-QWU" secondAttribute="top" id="ofA-z8-ynU"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="9IV-2e-JxI" secondAttribute="trailing" id="vkt-nd-Jbg"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0W9-ft-ywt" firstAttribute="top" secondItem="Bcc-If-QWU" secondAttribute="bottom" id="KI6-ey-fBL"/>
+                            <constraint firstItem="9IV-2e-JxI" firstAttribute="width" secondItem="BnA-6G-QMX" secondAttribute="width" id="MSE-RB-geT"/>
+                            <constraint firstAttribute="trailing" secondItem="Bcc-If-QWU" secondAttribute="trailing" id="OIM-4u-GZt"/>
+                            <constraint firstItem="Bcc-If-QWU" firstAttribute="leading" secondItem="BnA-6G-QMX" secondAttribute="leading" id="TCN-Wy-lWa"/>
+                            <constraint firstItem="Bcc-If-QWU" firstAttribute="top" secondItem="fV0-i8-qoe" secondAttribute="bottom" id="YdU-GW-rpd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Network Layer Security" id="7zI-ej-nh8">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="UKd-w6-jcx">
+                            <connections>
+                                <action selector="menuTapped:" destination="RbF-hp-Dde" id="73u-Ui-avR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <size key="freeformSize" width="375" height="1200"/>
+                    <connections>
+                        <outlet property="CVVTextField" destination="eis-Ab-XWf" id="DgV-vc-ZUG"/>
+                        <outlet property="cardNumberTextField" destination="AIh-Xu-u4Z" id="PDB-Te-K4Q"/>
+                        <outlet property="nameOnCardTextField" destination="rgm-TS-INM" id="iFd-zr-KKR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NaM-XD-6Yr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509.60000000000002" y="364.31784107946032"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1kc-uL-xh1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b91-A9-42w" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nAw-OD-00g">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RbF-hp-Dde" kind="relationship" relationship="rootViewController" id="FbU-i3-HBp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuL-w8-Nqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-230" y="367"/>
+        </scene>
+    </scenes>
+</document>
