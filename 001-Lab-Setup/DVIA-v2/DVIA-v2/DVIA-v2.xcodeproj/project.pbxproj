@@ -2027,7 +2027,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UAVZNE8PJA;
 				INFOPLIST_FILE = "DVIA-v2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.highaltitudehacks.DVIAswiftv2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2050,7 +2050,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UAVZNE8PJA;
 				INFOPLIST_FILE = "DVIA-v2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.highaltitudehacks.DVIAswiftv2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
