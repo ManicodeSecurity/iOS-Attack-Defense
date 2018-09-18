@@ -1,1 +1,0 @@
-<marquee>I aM In Y0uR JavaScriptz</marquee>

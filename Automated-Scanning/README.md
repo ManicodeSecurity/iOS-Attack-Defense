@@ -1,1 +1,0 @@
-https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
