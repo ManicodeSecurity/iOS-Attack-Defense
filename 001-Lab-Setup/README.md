@@ -66,5 +66,14 @@ Ensure Docker is installed and running:
 sudo docker images
 ```
 
+### Task 6: Clone This Repo in the VM
+
+To avoid setting up shared folders in VirtualBox, we will just simply clone the repo in the Santoku VM. Open a terminal in the VM and run the following commands:
+
+```
+cd ~/Desktop
+
+git clone https://github.com/ManicodeSecurity/iOS-Attack-Defense
+```
 
 
