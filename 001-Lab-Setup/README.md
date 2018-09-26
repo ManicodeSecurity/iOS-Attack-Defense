@@ -18,12 +18,32 @@ git clone https://github.com/ManicodeSecurity/iOS-Attack-Defense
 
 Everything needed to install DVIA is located in the `DVIA-v2` directory of this lab. 
 
+First we need to install some dependencies. In the `/DVIA-v2/DVIA-v2` directory you will see a `Podfile`. In this directory, run the following command:
+
+```
+pod install
+pod update
+```
+
 We will compile the DVIA source code using Xcode. In the `DVIA-v2` directory you will see a file called `DVIA-v2.xcworkspace`. Open this file in Xcode to start exploring the application and run the emulator.
+
+Xcode may prompt you to install additional components, please follow the prompts to install these before continuing. 
 
 ### Task 3: Build and Explore the Application 
 
 In the upper navigation bar of Xcode, click the button with the triangle to compile the application. This will open the app up in the Simulator. Click around and take a look at some of the challenges that come with DVIA.
 
+If you are running Xcode 10 the build will likely fail. If you ran a build already and it failed first we need to clear your project with `cmd+shift+k`.
+
+Next we tell Xcode to use the `Legacy Build System` as follows:
+
+```
+In Xcode, go to File->Project/Workspace settings
+
+Change the Build System to "Legacy Build System" in both "Shared Workspace Settings as well as "Per-User Workspace Settings".
+
+While you are still in the Workspace Settings dialog, you will need to delete Derived Data. This can be done by clicking the little grey arrow under Derived data section of the page then selecting your project folder called "DerivedData" and moving it to the trash.
+```
 
 ### Task 4: Santoku Linux Setup
 [Santoku Linux](https://santoku-linux.com/) is an open-source virtual machine that comes pre-installed with a number of useful tools needed for mobile security testing, malware analysis, and mobile forensics. 

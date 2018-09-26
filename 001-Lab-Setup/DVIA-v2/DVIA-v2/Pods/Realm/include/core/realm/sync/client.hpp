@@ -20,7 +20,8 @@
 #ifndef REALM_SYNC_CLIENT_HPP
 #define REALM_SYNC_CLIENT_HPP
 
-#include <stdint.h>
+#include <cstddef>
+#include <cstdint>
 #include <memory>
 #include <utility>
 #include <functional>
@@ -30,10 +31,24 @@
 #include <realm/util/logger.hpp>
 #include <realm/util/network.hpp>
 #include <realm/impl/cont_transact_hist.hpp>
+#include <realm/sync/protocol.hpp>
 #include <realm/sync/history.hpp>
 
 namespace realm {
 namespace sync {
+
+/// Supported protocols:
+///
+///      Protocol    URL scheme     Default port
+///     -----------------------------------------------------------------------------------
+///      realm       "realm:"       7800 (80 if Client::Config::enable_default_port_hack)
+///      realm_ssl   "realms:"      7801 (443 if Client::Config::enable_default_port_hack)
+///
+enum class Protocol {
+    realm,
+    realm_ssl
+};
+
 
 class Client {
 public:
@@ -46,24 +61,32 @@ public:
         /// amount of time (i.e., a server hammering protection mechanism).
         normal,
 
-        /// Delay reconnect attempts indefinitely. For testing purposes only.
+        /// For testing purposes only.
         ///
-        /// A reconnect attempt can be manually scheduled by calling
-        /// cancel_reconnect_delay(). In particular, when a connection breaks,
-        /// or when an attempt at establishing the connection fails, the
-        /// connection state change listener is called. If one calls
-        /// cancel_reconnect_delay() from that invocation of the listener, the
-        /// effect is to allow another reconnect attempt to occur.
-        never,
-
-        /// Never delay reconnect attempts. Perform them immediately. For
-        /// testing purposes only.
-        immediate
+        /// Never reconnect automatically after the connection is closed due to
+        /// an error. Allow immediate reconnect if the connection was closed
+        /// voluntarily (e.g., due to sessions being abandoned).
+        ///
+        /// In this mode, Client::cancel_reconnect_delay() and
+        /// Session::cancel_reconnect_delay() can still be used to trigger
+        /// another reconnection attempt (with no delay) after an error has
+        /// caused the connection to be closed.
+        testing
     };
 
-    static constexpr std::uint_fast64_t default_ping_keepalive_period_ms  = 600000; // 10 minutes
-    static constexpr std::uint_fast64_t default_pong_keepalive_timeout_ms = 300000; //  5 minutes
-    static constexpr std::uint_fast64_t default_pong_urgent_timeout_ms    =   5000; //  5 seconds
+    using port_type = util::network::Endpoint::port_type;
+    using RoundtripTimeHandler = void(milliseconds_type roundtrip_time);
+
+    // FIXME: The default values for `connect_timeout`, `ping_keepalive_period`,
+    // and `pong_keepalive_timeout` ought to be much lower (2 minutes, 1 minute,
+    // and 2 minutes) than they are. Their current values are due to the fact
+    // that the server is single threaded, and that some operations take more
+    // than 5 minutes to complete.
+    static constexpr milliseconds_type default_connect_timeout        = 600000; // 10 minutes
+    static constexpr milliseconds_type default_connection_linger_time =  30000; // 30 seconds
+    static constexpr milliseconds_type default_ping_keepalive_period  = 600000; // 10 minutes
+    static constexpr milliseconds_type default_pong_keepalive_timeout = 600000; // 10 minutes
+    static constexpr milliseconds_type default_fast_reconnect_limit   =  60000; // 1 minute
 
     struct Config {
         Config() {}
@@ -109,14 +132,76 @@ public:
         /// \sa make_client_history(), TrivialChangesetCooker.
         std::shared_ptr<ClientHistory::ChangesetCooker> changeset_cooker;
 
-        /// The number of ms between periodic keep-alive pings.
-        std::uint_fast64_t ping_keepalive_period_ms = default_ping_keepalive_period_ms;
+        /// The maximum number of milliseconds to allow for a connection to
+        /// become fully established. This includes the time to resolve the
+        /// network address, the TCP connect operation, the SSL handshake, and
+        /// the WebSocket handshake.
+        milliseconds_type connect_timeout = default_connect_timeout;
 
-        /// The number of ms to wait for keep-alive pongs.
-        std::uint_fast64_t pong_keepalive_timeout_ms = default_pong_keepalive_timeout_ms;
+        /// The number of milliseconds to keep a connection open after all
+        /// sessions have been abandoned (or suspended by errors).
+        ///
+        /// The purpose of this linger time is to avoid close/reopen cycles
+        /// during short periods of time where there are no sessions interested
+        /// in using the connection.
+        ///
+        /// If the connection gets closed due to an error before the linger time
+        /// expires, the connection will be kept closed until there are sessions
+        /// willing to use it again.
+        milliseconds_type connection_linger_time = default_connection_linger_time;
 
-        /// The number of ms to wait for urgent pongs.
-        std::uint_fast64_t pong_urgent_timeout_ms = default_pong_urgent_timeout_ms;
+        /// The client will send PING messages periodically to allow the server
+        /// to detect dead connections (heartbeat). This parameter specifies the
+        /// time, in milliseconds, between these PING messages. When scheduling
+        /// the next PING message, the client will deduct a small random amount
+        /// from the specified value to help spread the load on the server from
+        /// many clients.
+        milliseconds_type ping_keepalive_period = default_ping_keepalive_period;
+
+        /// Whenever the server receives a PING message, it is supposed to
+        /// respond with a PONG messsage to allow the client to detect dead
+        /// connections (heartbeat). This parameter specifies the time, in
+        /// milliseconds, that the client will wait for the PONG response
+        /// message before it assumes that the connection is dead, and
+        /// terminates it.
+        milliseconds_type pong_keepalive_timeout = default_pong_keepalive_timeout;
+
+        /// The maximum amount of time, in milliseconds, since the loss of a
+        /// prior connection, for a new connection to be considered a *fast
+        /// reconnect*.
+        ///
+        /// In general, when a client establishes a connection to the server,
+        /// the uploading process remains suspended until the initial
+        /// downloading process completes (as if by invocation of
+        /// Session::async_wait_for_download_completion()). However, to avoid
+        /// unnecessary latency in change propagation during ongoing
+        /// application-level activity, if the new connection is established
+        /// less than a certain amount of time (`fast_reconnect_limit`) since
+        /// the client was previously connected to the server, then the
+        /// uploading process will be activated immediately.
+        ///
+        /// For now, the purpose of the general delaying of the activation of
+        /// the uploading process, is to increase the chance of multiple initial
+        /// transactions on the client-side, to be uploaded to, and processed by
+        /// the server as a single unit. In the longer run, the intention is
+        /// that the client should upload transformed (from reciprocal history),
+        /// rather than original changesets when applicable to reduce the need
+        /// for changeset to be transformed on both sides. The delaying of the
+        /// upload process will increase the number of cases where this is
+        /// possible.
+        ///
+        /// FIXME: Currently, the time between connections is not tracked across
+        /// sessions, so if the application closes its session, and opens a new
+        /// one immediately afterwards, the activation of the upload process
+        /// will be delayed unconditionally.
+        milliseconds_type fast_reconnect_limit = default_fast_reconnect_limit;
+
+        /// Set to true to completely disable delaying of the upload process. In
+        /// this mode, the upload process will be activated immediately, and the
+        /// value of `fast_reconnect_limit` is ignored.
+        ///
+        /// For testing purposes only.
+        bool disable_upload_activation_delay = false;
 
         /// If enable_upload_log_compaction is true, every changeset will be
         /// compacted before it is uploaded to the server. Compaction will
@@ -131,6 +216,13 @@ public:
         /// decrease latencies, but possibly at the expense of scalability. Be
         /// sure to research the subject before you enable this option.
         bool tcp_no_delay = false;
+
+        /// The specified function will be called whenever a PONG message is
+        /// received on any connection. The round-trip time in milliseconds will
+        /// be pased to the function. The specified function will always be
+        /// called by the client's event loop thread, i.e., the thread that
+        /// calls `Client::run()`. This feature is mainly for testing purposes.
+        std::function<RoundtripTimeHandler> roundtrip_time_handler;
     };
 
     /// \throw util::EventLoop::Implementation::NotAvailable if no event loop
@@ -195,23 +287,14 @@ public:
     /// by any thread, and by multiple threads concurrently.
     bool wait_for_session_terminations_or_client_stopped();
 
+    /// Returns false if the specified URL is invalid.
+    bool decompose_server_url(const std::string& url, Protocol& protocol, std::string& address,
+                              port_type& port, std::string& path) const;
+
 private:
     class Impl;
     std::unique_ptr<Impl> m_impl;
     friend class Session;
-};
-
-
-/// Supported protocols:
-///
-///      Protocol    URL scheme     Default port
-///     -----------------------------------------------------------------------------------
-///      realm       "realm:"       7800 (80 if Client::Config::enable_default_port_hack)
-///      realm_ssl   "realms:"      7801 (443 if Client::Config::enable_default_port_hack)
-///
-enum class Protocol {
-    realm,
-    realm_ssl
 };
 
 
@@ -275,7 +358,6 @@ class BadServerUrl; // Exception
 class Session {
 public:
     using port_type = util::network::Endpoint::port_type;
-    using version_type = _impl::History::version_type;
     using SyncTransactCallback = void(VersionID old_version, VersionID new_version);
     using ProgressHandler = void(std::uint_fast64_t downloaded_bytes,
                                  std::uint_fast64_t downloadable_bytes,
@@ -326,6 +408,20 @@ public:
         /// the value of url_prefix should be matched with a corresponding
         /// change of the server side proxy.
         std::string url_prefix = "/realm-sync";
+
+        /// authorization_header_name is the name of the HTTP header containing
+        /// the Realm access token. The value of the HTTP header is
+        /// "Realm-Access-Token version=1 token=....".
+        /// authorization_header_name does not participate in session
+        /// multiplexing partitioning.
+        std::string authorization_header_name = "Authorization";
+
+        /// custom_http_headers is a map of custom HTTP headers. The keys of the map
+        /// are HTTP header names, and the values are the corresponding HTTP
+        /// header values.
+        /// If "Authorization" is used as a custom header name,
+        /// authorization_header_name must be set to anther value.
+        std::map<std::string, std::string> custom_http_headers;
 
         /// Sessions can be multiplexed over the same TCP/SSL connection.
         /// Sessions might share connection if they have identical server_address,
@@ -437,10 +533,6 @@ public:
 
         /// The encryption key the SharedGroup will be opened with.
         Optional<std::array<char, 64>> encryption_key;
-
-        /// FIXME: This value must currently be true in a cluster setup.
-        /// This restriction will be lifted in the future.
-        bool one_connection_per_session = true;
     };
 
     /// \brief Start a new session for the specified client-side Realm.
@@ -713,17 +805,28 @@ public:
               Protocol protocol = Protocol::realm);
     /// @}
 
-    /// \brief Refresh the user token associated with this session.
+    /// \brief Refresh the access token associated with this session.
     ///
     /// This causes the REFRESH protocol message to be sent to the server. See
     /// \ref Protocol.
     ///
-    /// In an on-going session a client may expect its access token to expire at
-    /// a certain time and schedule acquisition of a fresh access token (using a
-    /// refresh token or by other means) in due time to provide a better user
-    /// experience. Without refreshing the token, the client will be notified
-    /// that the session is terminated due to insufficient privileges and must
-    /// reacquire a fresh token, which is a potentially disruptive process.
+    /// In an on-going session the application may expect the access token to
+    /// expire at a certain time and schedule acquisition of a fresh access
+    /// token (using a refresh token or by other means) in due time to provide a
+    /// better user experience, and seamless connectivity to the server.
+    ///
+    /// If the application does not proactively refresh an expiring token, the
+    /// session will eventually be disconnected. The application can detect this
+    /// by monitoring the connection state
+    /// (set_connection_state_change_listener()), and check whether the error
+    /// code is `ProtocolError::token_expired`. Such a session can then be
+    /// revived by calling refresh() with a newly acquired access token.
+    ///
+    /// Due to protocol techicalities, a race condition exists that can cause a
+    /// session to become, and remain disconnected after a new access token has
+    /// been passed to refresh(). The application can work around this race
+    /// condition by detecting the `ProtocolError::token_expired` error, and
+    /// always initiate a token renewal in this case.
     ///
     /// It is an error to call this function before calling `Client::bind()`.
     ///
@@ -890,7 +993,7 @@ enum class Client::Error {
     limits_exceeded             = 103, ///< Limits exceeded in input message
     bad_session_ident           = 104, ///< Bad session identifier in input message
     bad_message_order           = 105, ///< Bad input message order
-    bad_file_ident_pair         = 106, ///< Bad file identifier pair (ALLOC)
+    bad_client_file_ident       = 106, ///< Bad client file identifier (IDENT)
     bad_progress                = 107, ///< Bad progress information (DOWNLOAD)
     bad_changeset_header_syntax = 108, ///< Bad syntax in changeset header (DOWNLOAD)
     bad_changeset_size          = 109, ///< Bad changeset size in changeset header (DOWNLOAD)
@@ -903,6 +1006,10 @@ enum class Client::Error {
     bad_client_version          = 116, ///< Bad last integrated client version in changeset header (DOWNLOAD)
     ssl_server_cert_rejected    = 117, ///< SSL server certificate rejected
     pong_timeout                = 118, ///< Timeout on reception of PONG respone message
+    bad_client_file_ident_salt  = 119, ///< Bad client file identifier salt (IDENT)
+    bad_file_ident              = 120, ///< Bad file identifier (ALLOC)
+    connect_timeout             = 121, ///< Sync connection was not fully established in time
+    bad_timestamp               = 122, ///< Bad timestamp (PONG)
 };
 
 const std::error_category& client_error_category() noexcept;

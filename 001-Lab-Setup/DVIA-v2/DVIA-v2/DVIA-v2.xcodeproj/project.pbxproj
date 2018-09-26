@@ -1571,7 +1571,6 @@
 				F65AC864202FA37500E4088A /* Frameworks */,
 				F65AC865202FA37500E4088A /* Resources */,
 				179AFFE713A4DAA32ECBFEA9 /* [CP] Embed Pods Frameworks */,
-				DBF7B3404C3581414A66C2BE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1707,21 +1706,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DBF7B3404C3581414A66C2BE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DVIA-v2/Pods-DVIA-v2-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2027,7 +2011,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UAVZNE8PJA;
 				INFOPLIST_FILE = "DVIA-v2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.highaltitudehacks.DVIAswiftv2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2050,7 +2034,7 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UAVZNE8PJA;
 				INFOPLIST_FILE = "DVIA-v2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.highaltitudehacks.DVIAswiftv2;
 				PRODUCT_NAME = "$(TARGET_NAME)";

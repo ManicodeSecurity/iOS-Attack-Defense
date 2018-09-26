@@ -89,6 +89,8 @@ void SyncManager::configure_file_system(const std::string& base_file_path,
         }
 
         REALM_ASSERT(m_metadata_manager);
+        m_client_uuid = m_metadata_manager->client_uuid();
+
         // Perform any necessary file actions.
         std::vector<SyncFileActionMetadata> completed_actions;
         SyncFileActionMetadataResults file_actions = m_metadata_manager->all_pending_actions();
@@ -196,6 +198,8 @@ void SyncManager::reset_for_testing()
     std::lock_guard<std::mutex> lock(m_file_system_mutex);
     m_file_manager = nullptr;
     m_metadata_manager = nullptr;
+    m_client_uuid = util::none;
+
     {
         // Destroy all the users.
         std::lock_guard<std::mutex> lock(m_user_mutex);
@@ -249,18 +253,6 @@ void SyncManager::set_logger_factory(SyncLoggerFactory& factory) noexcept
 {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_logger_factory = &factory;
-}
-
-void SyncManager::set_client_should_reconnect_immediately(bool reconnect_immediately)
-{
-    std::lock_guard<std::mutex> lock(m_mutex);
-    m_client_reconnect_mode = reconnect_immediately ? ReconnectMode::immediate : ReconnectMode::normal;
-}
-
-bool SyncManager::client_should_reconnect_immediately() const noexcept
-{
-    std::lock_guard<std::mutex> lock(m_mutex);
-    return m_client_reconnect_mode == ReconnectMode::immediate;
 }
 
 void SyncManager::reconnect()
@@ -411,12 +403,7 @@ std::string SyncManager::path_for_realm(const SyncUser& user, const std::string&
 {
     std::lock_guard<std::mutex> lock(m_file_system_mutex);
     REALM_ASSERT(m_file_manager);
-    const auto& user_local_identity = user.local_identity();
-    util::Optional<SyncUserIdentifier> user_info;
-    if (user.token_type() == SyncUser::TokenType::Normal)
-        user_info = SyncUserIdentifier{ user.identity(), user.server_url() };
-
-    return m_file_manager->path(user_local_identity, raw_realm_url, std::move(user_info));
+    return m_file_manager->path(user.local_identity(), raw_realm_url);
 }
 
 std::string SyncManager::recovery_directory_path() const
@@ -523,6 +510,6 @@ std::unique_ptr<SyncClient> SyncManager::create_sync_client() const
 
 std::string SyncManager::client_uuid() const
 {
-    REALM_ASSERT(m_metadata_manager);
-    return m_metadata_manager->client_uuid();
+    REALM_ASSERT(m_client_uuid);
+    return *m_client_uuid;
 }
