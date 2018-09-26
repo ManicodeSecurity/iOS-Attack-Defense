@@ -45,13 +45,13 @@ cat ./D0461942-D7D7-4EC8-8C94-5E6D4CDF6C28/data/Containers/Data/Application/BF64
 
 One of the features in iOS to make it seem like apps load more seamlessly is the Snapshot feature. iOS will take a screenshot of the application in its current state when it is placed in the background. That screenshot is displayed when the app is brought to the foreground as the app loads. This makes the experience seem instant. Snapshots should never contain sensitive information as they are accessible in the application's bundle. 
 
-Open up the DVIA app in the simulator and under the `Sidechannel Data Leakage` menu, select `App Snapshot`.
+Open up the DVIA app in the simulator and under the `Sidechannel Data Leakage` menu, select `App Screenshot`.
 
 Enter a fake answer in the "security question" box and background the application by hitting the home button in the simulator.
 
 Open up your terminal and view the Snapshot that was taken by running the following commands:
 ```
-# Your path will have different IDs
+# Your path will have different IDs, find the directory from the path to userInfo.plist. You want the parent directory of "/Documents/".
 cd ~/Library/Developer/CoreSimulator/Devices/D0461942-D7D7-4EC8-8C94-5E6D4CDF6C28/data/Containers/Data/Application/BF64C8E3-915B-4414-85DB-4ADB2D5C7037/Library/Caches/Snapshots/com.highaltitudehacks.DVIAswiftv2
 
 # The Snapshot is stored as a ktx image file
