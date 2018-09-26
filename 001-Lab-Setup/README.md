@@ -22,7 +22,6 @@ First we need to install some dependencies. In the `/DVIA-v2/DVIA-v2` directory 
 
 ```
 pod install
-pod update
 ```
 
 We will compile the DVIA source code using Xcode. In the `DVIA-v2` directory you will see a file called `DVIA-v2.xcworkspace`. Open this file in Xcode to start exploring the application and run the emulator.
