@@ -13,5 +13,5 @@ unzip DVIA-v2-swift.ipa
 
 Take a look around the DVIA and get a feel for the structure. 
 
-In the `apps/other_apps` directory you will find a few .ipa files that are made for Jailbroken devices. Pick an app and unzip it and begin exploring. Note: These IPAs were picked at random and may not have security vulnerabilities. 
+In the `apps/other_apps` directory you will find a few .ipa files that are made for Jailbroken devices. Pick an app and unzip it and begin exploring. Note: These IPAs were picked at random and may or many not not have security vulnerabilities. 
 

@@ -39,6 +39,7 @@ We will need to use [Docker](https://www.docker.com/) to run some tools in our V
 
 
 ```
+# The following should be run in the Santoku VM - NOT on your local machine
 sudo apt-get update
 
 sudo apt-get install \

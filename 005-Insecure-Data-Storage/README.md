@@ -59,3 +59,5 @@ open 7C163A44-F2D7-4B55-BC09-C5CB45EE34AD@3x.ktx
 ```
 
 ## SQLite Files
+
+In the directory `/sqlite` of this lab you will find the SQLite database that was used in a previous version of the United MileagePlus iOS application. This file was retrieved from an iTunes backup. Feel free to explore it using the `sqlite3` command line utility. 

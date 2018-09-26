@@ -1,5 +1,5 @@
 # Recon
-The goal of this lab is to discover everything that we can just from what is publicly available to us as researchers (the .ipa file). 
+The goal of this lab is to discover everything that we can just from what is publicly and easily available to us as researchers (the .ipa file). 
 
 ### Task 1: Inspect Info.plist
 We will first take a look at the `Info.plist` file to look for sensitive information and gather more intel about the app.
@@ -15,10 +15,11 @@ Now we can search for data in the file using a simple `cat` command. The followi
 cat Info.plist | grep NSAllowsArbitraryLoads -A1
 ```
 
+### Discussion Question
 What else can we look for in the `Info.plist` file to understand more about the application?
 
 ### Task 2: Run Strings
-Strings will help us discover hardcoded credentials, URLs, keys, and more. It is a simple tool that is used as the first step in recon of an app. Below are some simple examples. Feel free to experiment further
+Strings will help us discover hardcoded credentials, URLs, keys, and more. It is a simple tool that is used as the first step in recon of an app. Below are some simple examples. Feel free to experiment further.
 
 ```
 strings <IPA_FILE> | egrep -i 'http|https'
@@ -44,7 +45,7 @@ Another handy use of otool is to identify all of the linked libraries associated
 otool -L <IPA_NAME>
 ```
 
-For those who are literate in assembly code, we can also use `otool` to disassemble the app into assembly language (this will also make your terminal look like you are doing some 133t hax):
+For those who are literate in assembly code, we can also use `otool` to disassemble the app into assembly language (this will also make your terminal look like you are doing some 1337 hax):
 
 ```
 otool -tV <IPA_NAME>
