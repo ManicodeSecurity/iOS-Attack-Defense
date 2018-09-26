@@ -1,4 +1,4 @@
-# Recon
+# iOS App Recon
 The goal of this lab is to discover everything that we can just from what is publicly and easily available to us as researchers (the .ipa file). For this lab we will use the unzipped .ipa file from `002-Exploring-IPA`. 
 
 In a terminal on your local machine, `cd` into the directory `/002-Exploring-IPA/Payload/DVIA-v2.app`

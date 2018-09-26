@@ -1,5 +1,5 @@
-
 # Lab Setup
+
 The goal of this lab is to successfully prepare your environment for the remainder of the labs. We will be using a variety of technologies including 
 
 ### Requirements
