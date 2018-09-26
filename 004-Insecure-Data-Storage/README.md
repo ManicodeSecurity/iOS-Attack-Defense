@@ -21,7 +21,7 @@ cat ./D0461942-D7D7-4EC8-8C94-5E6D4CDF6C28/data/Containers/Data/Application/BF64
 ```
 
 ## Storing Sensitive Data in Plist Files
-Another common way of storing data is in plist files. Plist files are an acceptable place to store information that is not confidential. Plist files are unencrypted and can be easily be fetched even from a non-jailbroken device. 
+Another common way of storing data is directly in plist files. Plist files are an acceptable place to store information that is not confidential. Plist files are unencrypted and can be easily be fetched even from a non-jailbroken device. 
 
 ### Step 1: Open the DVIA Lab
 Using the iOS Simulator, navigate to the DVIA app. Open the menu and go to `Local Data Storage` and select `Plist`.
