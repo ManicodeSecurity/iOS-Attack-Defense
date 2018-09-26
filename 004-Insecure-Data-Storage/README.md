@@ -14,7 +14,7 @@ We can now retrieve the data that we stored in `NSUserDefaults` by using `grep` 
 
 ```
 cd ~/Library/Developer/CoreSimulator/Devices
-find . | grep DVIAswiftv2.plist
+find . -name \*DVIAswiftv2.plist
 
 # We now cat the plist file. Yours will look different!
 cat ./D0461942-D7D7-4EC8-8C94-5E6D4CDF6C28/data/Containers/Data/Application/BF64C8E3-915B-4414-85DB-4ADB2D5C7037/Library/Preferences/com.highaltitudehacks.DVIAswiftv2.plist
@@ -35,7 +35,7 @@ We can now retrieve the .plist file on our local machine. Open up a new terminal
 cd ~/Library/Developer/CoreSimulator/Devices
 
 # We need to find the correct device that contains the plist file
-find . | grep userInfo.plist
+find . -name \*userInfo.plist
 
 # Now we can cat the plist file (below is an example, please replace with your correct path from the above command)
 cat ./D0461942-D7D7-4EC8-8C94-5E6D4CDF6C28/data/Containers/Data/Application/BF64C8E3-915B-4414-85DB-4ADB2D5C7037/Documents/userInfo.plist
