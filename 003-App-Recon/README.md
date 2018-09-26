@@ -16,7 +16,7 @@ Now we can search for data in the file using a simple `cat` command. The followi
 
 ```
 cat Info.plist
-cat Info.plist | grep NSAllowsArbitraryLoads -A1
+cat Info.plist | grep -A1 NSAllowsArbitraryLoads
 ```
 
 ### Discussion Question
