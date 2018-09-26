@@ -9,7 +9,7 @@ Using the iOS Simulator, navigate to the DVIA app. Open the menu and go to `Loca
 
 Enter some dummy data in the text field.
 
-## Step 2: Retrieve the Info in the NSUserDefaults Plist File
+### Step 2: Retrieve the Info in the NSUserDefaults Plist File
 We can now retrieve the data that we stored in `NSUserDefaults` by using `grep` to find the appropriate plist file:
 
 ```
