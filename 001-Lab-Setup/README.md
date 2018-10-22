@@ -25,6 +25,11 @@ pod install
 pod update
 ```
 
+If you do not have `cocoapods` installed please use the following command:
+```
+sudo gem install cocoapods
+```
+
 We will compile the DVIA source code using Xcode. In the `DVIA-v2` directory you will see a file called `DVIA-v2.xcworkspace`. Open this file in Xcode to start exploring the application and run the emulator.
 
 Xcode may prompt you to install additional components, please follow the prompts to install these before continuing. 
