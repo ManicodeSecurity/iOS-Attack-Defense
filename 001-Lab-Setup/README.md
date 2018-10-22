@@ -21,8 +21,8 @@ Everything needed to install DVIA is located in the `DVIA-v2` directory of this 
 First we need to install some dependencies. In the `/DVIA-v2/DVIA-v2` directory you will see a `Podfile`. In this directory, run the following command:
 
 ```
-pod install
 pod update
+pod install
 ```
 
 If you do not have `cocoapods` installed please use the following command:
