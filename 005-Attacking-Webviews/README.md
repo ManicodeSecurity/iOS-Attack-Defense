@@ -1,6 +1,6 @@
 # Attacking Webviews
 
-Webiviews offer many benefits to mobile application developers including the ability to reuse existing code between apps, patch applications quickly, and use comfortable technoligies. 
+Webviews offer many benefits to mobile application developers including the ability to reuse existing code between apps, patch applications quickly, and use comfortable technologies.
 
 Webviews also present security challenges in both iOS and Android. Traditional web application vulnerabilities such as Cross-Site Scripting and other forms of injection may exist in WebViews if not configured properly.
 
@@ -11,7 +11,7 @@ In the simulator running on your local machine, open the DVIA app and navigate t
 You will see that anything typed in the top text box will be displayed below in HTML.
 
 ## Task 2: Inject Javascript
-Since WKWEbViews will not display alert boxes our old school XSS payload of `<script>alert('xss')</script> will not work`
+Since `WKWebView`s will not display alert boxes our old school XSS payload of `<script>alert('xss')</script>` will not work
 
 The four challenges on this page also may not work reliably in  the simulator.
 
