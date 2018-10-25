@@ -45,7 +45,7 @@ Next we tell Xcode to use the `Legacy Build System` as follows:
 ```
 In Xcode, go to File->Project/Workspace settings
 
-Change the Build System to "Legacy Build System" in both "Shared Workspace Settings as well as "Per-User Workspace Settings".
+Change the Build System to "Legacy Build System" in both "Shared Workspace Settings" as well as "Per-User Workspace Settings".
 
 While you are still in the Workspace Settings dialog, you will need to delete Derived Data. This can be done by clicking the little grey arrow under Derived data section of the page then selecting your project folder called "DerivedData" and moving it to the trash.
 ```
