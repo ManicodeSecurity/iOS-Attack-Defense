@@ -45,7 +45,7 @@ Next we tell Xcode to use the `Legacy Build System` as follows:
 ```
 In Xcode, go to File->Project/Workspace settings
 
-Change the Build System to "Legacy Build System" in both "Shared Workspace Settings as well as "Per-User Workspace Settings".
+Change the Build System to "Legacy Build System" in both "Shared Workspace Settings" as well as "Per-User Workspace Settings".
 
 While you are still in the Workspace Settings dialog, you will need to delete Derived Data. This can be done by clicking the little grey arrow under Derived data section of the page then selecting your project folder called "DerivedData" and moving it to the trash.
 ```
@@ -57,7 +57,9 @@ If you have not already downloaded the .ISO file, please do so now.
 
 Please follow the directions outlined in the official [Santoku Linux Documentation](https://santoku-linux.com/howto/installing-santoku/installing-santoku-in-a-virtual-machine/) to complete the setup in VirtualBox.
 
-*! Important !* Please ensure VirtualBox Guest additions is installed per the instructions.
+If VirtualBox is already set up, you should be able to double click the .ISO file to set up Santoku.
+
+*! Important !* It's advised to install VirtualBox Guest additions as per the instructions.
 
 ### Task 5: Install Docker in the VM
 We will need to use [Docker](https://www.docker.com/) to run some tools in our VM. Below is how we install it in this Ubuntu VM:
@@ -65,6 +67,9 @@ We will need to use [Docker](https://www.docker.com/) to run some tools in our V
 
 ```
 # The following should be run in the Santoku VM - NOT on your local machine
+# You will need to type everything manually if Guest additions is not set up
+# Note that you don't need to type out the `\`
+
 sudo apt-get update
 
 sudo apt-get install \
@@ -73,7 +78,9 @@ sudo apt-get install \
     curl \
     software-properties-common
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-get install curl
+
+curl -fssl https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 sudo apt-key fingerprint 0EBFCD88
 
