@@ -36,7 +36,7 @@ Xcode may prompt you to install additional components, please follow the prompts
 
 ### Task 3: Build and Explore the Application 
 
-In the upper navigation bar of Xcode, click the button with the triangle to compile the application. This will open the app up in the Simulator. Click around and take a look at some of the challenges that come with DVIA.
+In the upper navigation bar of Xcode, click the button with the triangle to compile the application. This will open the app up in the Emulator. Click around and take a look at some of the challenges that come with DVIA.
 
 If you are running Xcode 10 the build will likely fail. If you ran a build already and it failed first we need to clear your project with `cmd+shift+k`.
 
